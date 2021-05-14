@@ -1,6 +1,7 @@
 import EasyDraw from "../EasyDraw.js";
+import { getRangedRandom } from "./utils/utils.js";
 
-class App {
+class Canvas {
   constructor() {
     this.canvas = document.createElement("canvas");
     this.ctx = this.canvas.getContext("2d");
@@ -10,20 +11,37 @@ class App {
     this.resize();
 
     this.drawer = new EasyDraw({ ctx: this.ctx });
+    this.drawBackground();
     this.drawSky();
   }
 
+  drawBackground() {
+    const gradient = this.ctx.createLinearGradient(
+      0,
+      0,
+      0,
+      this.canvas.height - 700
+    );
+
+    // Add three color stops
+    gradient.addColorStop(0, "rgba(48, 48, 111, 1)");
+    // gradient.addColorStop(0.5, "rgba(200, 200, 200, 0.9)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255)");
+    gradient.addColorStop(1, "rgba(247, 117, 117, 1)");
+
+    this.ctx.fillStyle = gradient;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
   drawSky() {
-    for (var j = 1; j < 5000; j++) {
-      this.ctx.fillStyle = "rgb(250, 252, 255)";
+    for (var j = 1; j < 10000; j++) {
+      this.ctx.fillStyle = "rgb(255, 200, 150)";
 
       const x = Math.floor(Math.random() * this.canvas.width);
       const y = Math.floor(Math.random() * this.canvas.height);
-      const min = 1;
-      const max = 5;
-      const r = Math.random() * (max - min) + min;
+      const r = Math.floor(getRangedRandom(1, 3.5));
       const angle = Math.random() * 180;
-      const sharpness = Math.random() * (50 - 20) + 20;
+      const sharpness = getRangedRandom(20, 50);
       this.drawer.moveTo(x, y);
       this.drawer.rotate(angle);
 
@@ -57,5 +75,5 @@ class App {
 }
 
 window.onload = () => {
-  new App();
+  new Canvas();
 };
