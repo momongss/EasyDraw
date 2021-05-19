@@ -1,4 +1,4 @@
-## EasyDraw.js
+# EasyDraw.js
 
     html5 canvas 를 쉽게 사용하기 위한 라이브러리
 
@@ -7,8 +7,29 @@
 
 ---
 
+## 멤버변수
+
+- x
+- y
+- angle
+
+현재 나의 위치(x, y), 내가 향하고 있는 방향 (angle)
+
+## 메서드
+
+- moveTo (x, y)
+- moveForward (distance)
+- lineForward (distance)
+- drawLine (distance)
+- rotate (angle)
+- lookCurPos (length)
+
+  - 디버깅 용도. 현재 위치를 red로 표시.
+
+---
+
 <br>
 
-### 그려본 것 example
+### 위 라이브러리로 그린 것. example
 
 <img src="./sky.png">

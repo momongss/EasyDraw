@@ -1,5 +1,5 @@
 export default class EasyDraw {
-  constructor({ ctx, initPos, initAngle }) {
+  constructor({ ctx, initAngle }) {
     this.ctx = ctx;
     this.angle = initAngle ? initAngle : 0;
 
